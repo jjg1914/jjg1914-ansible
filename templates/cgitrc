@@ -2,6 +2,8 @@
 # cgit config
 # see cgitrc(5) for details
 
-css=/git.css
+css=/cgit.css
 logo=/cgit.png
 
+repo.url=ubuntu/ansible
+repo.path=/home/ubuntu/git/ansible/.git
