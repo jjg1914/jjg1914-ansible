@@ -1,0 +1,65 @@
+---
+- hosts: all
+  tasks: 
+  - name: Install GIT
+    package:
+      name: git
+      state: latest
+  - name: Install VIM
+    package:
+      name: vim
+      state: latest
+  - name: Install NGINX
+    notify: restart nginx
+    package:
+      name: nginx
+      state: latest
+  - name: Install FCGIWRAP
+    notify:
+    - restart fcgiwrap.socket
+    package:
+      name: fcgiwrap
+      state: latest
+  - name: Install CGIT
+    notify: restart nginx
+    package:
+      name: cgit
+      state: latest
+  - name: CGIT cgitrc
+    notify:
+    - restart nginx
+    template:
+      src: cgitrc
+      dest: /etc/cgitrc
+      owner: root
+      group: root
+      mode: 0644
+  - name: CGIT config
+    notify:
+    - restart nginx
+    - restart fcgiwrap.socket
+    template:
+      src: cgit
+      dest: /etc/nginx/sites-available/cgit
+      owner: root
+      group: root
+      mode: 0644
+  - name: CGIT enable
+    notify: restart nginx
+    file:
+      src: /etc/nginx/sites-available/cgit
+      dest: /etc/nginx/sites-enabled/cgit
+      owner: root
+      group: root
+      state: link
+  handlers:	
+  - name: restart nginx
+    service:
+      name: nginx
+      state: restarted
+      enabled: yes
+  - name: restart fcgiwrap.socket
+    service:
+      name: fcgiwrap.socket
+      state: restarted
+      enabled: yes

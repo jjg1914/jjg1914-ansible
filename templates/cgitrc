@@ -1,0 +1,7 @@
+#
+# cgit config
+# see cgitrc(5) for details
+
+css=/git.css
+logo=/cgit.png
+
