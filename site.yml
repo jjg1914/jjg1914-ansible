@@ -5,26 +5,39 @@
     package:
       name: git
       state: latest
+
   - name: Install VIM
     package:
       name: vim
       state: latest
+
+  - name: VIM vimrc
+    template:
+      src: vimrc
+      dest: ~/.vimrc
+      owner: ubuntu
+      group: ubuntu
+      mode: 0644
+
   - name: Install NGINX
     notify: restart nginx
     package:
       name: nginx
       state: latest
+
   - name: Install FCGIWRAP
     notify:
     - restart fcgiwrap.socket
     package:
       name: fcgiwrap
       state: latest
+
   - name: Install CGIT
     notify: restart nginx
     package:
       name: cgit
       state: latest
+
   - name: CGIT cgitrc
     notify:
     - restart nginx
@@ -34,6 +47,7 @@
       owner: root
       group: root
       mode: 0644
+
   - name: CGIT config
     notify:
     - restart nginx
@@ -44,6 +58,7 @@
       owner: root
       group: root
       mode: 0644
+
   - name: CGIT enable
     notify: restart nginx
     file:
@@ -52,6 +67,14 @@
       owner: root
       group: root
       state: link
+
+  - name: CGIT directory
+    file:
+      path: /var/www/cgit
+      owner: root
+      group: root
+      state: directory
+
   handlers:	
   - name: restart nginx
     service:

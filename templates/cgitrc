@@ -5,5 +5,5 @@
 css=/cgit.css
 logo=/cgit.png
 
-repo.url=ubuntu/ansible
-repo.path=/home/ubuntu/git/ansible/.git
+# repo.url=ubuntu/ansible
+# repo.path=/home/ubuntu/git/ansible/.git
