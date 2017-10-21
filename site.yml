@@ -75,12 +75,28 @@
       group: root
       state: directory
 
+  - name: REPO jjg1914.me-ansible.git
+    git:
+      repo: https://github.com/jjg1914/jjg1914.me-ansible.git
+      dest: /var/www/cgit/jjg1914.me-ansible.git
+      bare: yes
+
+  - name: DIRECTORY jjg1914.me-ansible.git
+    file:
+      path: /var/www/cgit/jjg1914.me-ansible.git
+      owner: ubuntu
+      group: ubuntu
+      state: directory
+      recurse: yes
+
   handlers:	
+
   - name: restart nginx
     service:
       name: nginx
       state: restarted
       enabled: yes
+
   - name: restart fcgiwrap.socket
     service:
       name: fcgiwrap.socket

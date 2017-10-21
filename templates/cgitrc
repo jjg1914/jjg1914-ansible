@@ -5,5 +5,9 @@
 css=/cgit.css
 logo=/cgit.png
 
-# repo.url=ubuntu/ansible
-# repo.path=/home/ubuntu/git/ansible/.git
+virtual-root=/
+
+repo.url=jjg1914.me-ansible
+repo.path=/var/www/cgit/jjg1914.me-ansible.git
+repo.desc=Site Configuration
+repo.owner=jjg1914@gmail.com
