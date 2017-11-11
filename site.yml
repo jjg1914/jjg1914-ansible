@@ -120,11 +120,13 @@
     git:
       repo: git@github.com:jjg1914/jjg1914.me-ansible.git
       dest: /home/ubuntu/git/jjg1914.me-ansible/
+      update: no
 
   - name: REPO jjg1914.me
     git:
       repo: https://github.com/jjg1914/jjg1914.me
       dest: /home/ubuntu/git/jjg1914.me/
+      update: no
     notify: rebuild jjg1914.me
 
   - name: jjg1914.me config
@@ -138,7 +140,7 @@
       mode: 0644
     become: true
 
-  - name: CGIT enable
+  - name: jjg1914.me enable
     notify: restart nginx
     file:
       src: /etc/nginx/sites-available/jjg1914.me
@@ -147,6 +149,34 @@
       group: root
       state: link
     become: true
+
+  - name: jjg1914.me-ansible post-receive
+    template:
+      src: jjg1914.me-ansible.post-receive
+      dest: /home/ubuntu/git/jjg1914.me-ansible/.git/hooks/post-receive
+      owner: ubuntu
+      group: ubuntu
+      mode: 0755
+
+  - name: jjg1914.me post-receive
+    template:
+      src: jjg1914.me.post-receive
+      dest: /home/ubuntu/git/jjg1914.me/.git/hooks/post-receive
+      owner: ubuntu
+      group: ubuntu
+      mode: 0755
+
+  - name: cron jjg1914.me-ansible pull
+    cron:
+      name: cron-jjg1914.me-ansible.pull
+      job: /home/ubuntu/git/jjg1914.me-ansible/scripts/cron-jjg1914.me-ansible-pull  && curl -fsS --retry 3 https://hchk.io/e80ecef6-aa92-4c11-929a-c6f7e2f01e44 > /dev/null
+      minute: "*/5"
+
+  - name: cron jjg1914.me pull
+    cron:
+      name: cron-jjg1914.me.pull
+      job: /home/ubuntu/git/jjg1914.me-ansible/scripts/cron-jjg1914.me-pull  && curl -fsS --retry 3 https://hchk.io/df9adef7-5fae-40ab-9803-80688eb4f11e > /dev/null
+      minute: "*/5"
 
   handlers:	
 

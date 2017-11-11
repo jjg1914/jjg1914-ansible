@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd "$(GIT_DIR)/.." || exit 1
+bundle install
+bundle exec jekyll build

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git --git-dir=/home/ubuntu/git/jjg1914.me-ansible/.git pull
