@@ -115,6 +115,7 @@
     git:
       repo: https://github.com/jjg1914/jjg1914.me
       dest: /home/ubuntu/git/jjg1914.me/
+    notify: rebuild jjg1914.me
 
   handlers:	
 
@@ -129,3 +130,6 @@
       name: fcgiwrap.socket
       state: restarted
       enabled: yes
+
+  - name: rebuild jjg1914.me
+    shell: bundle install && bundle exec jekyll build chdir=/home/ubuntu/git/jjg1914.me
