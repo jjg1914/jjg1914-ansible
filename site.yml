@@ -6,6 +6,14 @@
       name: build-essential
       state: latest
 
+  - name: BASH bashrc
+    template:
+      src: bashrc
+      dest: ~/.bashrc
+      owner: ubuntu
+      group: ubuntu
+      mode: 0644
+
   - name: Install GIT
     package:
       name: git
@@ -28,6 +36,12 @@
     package:
       name: ruby-full
       state: latest
+
+  - name: Install Bundler
+    gem:
+      name: bundler
+      state: latest
+      user_install: true
 
   - name: Install Jekyll
     gem:
@@ -84,35 +98,19 @@
       group: root
       state: link
 
-  - name: CGIT directory
-    file:
-      path: /var/www/cgit
-      owner: root
-      group: root
-      state: directory
-
   - name: REPO jjg1914.me-ansible.git
     git:
-      repo: https://github.com/jjg1914/jjg1914.me-ansible.git
+      repo: git@github.com:jjg1914/jjg1914.me-ansible.git
       dest: /home/ubuntu/git/jjg1914.me-ansible/
-
-  - name: DIRECTORY jjg1914.me-ansible.git
-    file:
-      path: /home/ubuntu/git/jjg1914.me-ansible/
-      owner: ubuntu
-      group: ubuntu
-      state: directory
-      recurse: yes
 
   - name: REPO jjg1914.me
     git:
       repo: https://github.com/jjg1914/jjg1914.me
       dest: /home/ubuntu/git/jjg1914.me/
-      bare: yes
 
-  - name: DIRECTORY jjg1914.me
+  - name: DIRECTORY git
     file:
-      path: /home/ubuntu/git/jjg1914.me/
+      path: /home/ubuntu/git
       owner: ubuntu
       group: ubuntu
       state: directory
