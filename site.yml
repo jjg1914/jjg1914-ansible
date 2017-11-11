@@ -19,6 +19,14 @@
       name: git
       state: latest
 
+  - name: GIT gitconfig
+    template:
+      src: gitconfig
+      dest: ~/.gitconfig
+      owner: ubuntu
+      group: ubuntu
+      mode: 0644
+
   - name: Install VIM
     package:
       name: vim
