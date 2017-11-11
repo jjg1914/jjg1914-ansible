@@ -117,6 +117,25 @@
       dest: /home/ubuntu/git/jjg1914.me/
     notify: rebuild jjg1914.me
 
+  - name: jjg1914.me config
+    notify:
+    - restart nginx
+    template:
+      src: jjg1914.me
+      dest: /etc/nginx/sites-available/jjg1914.me
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: CGIT enable
+    notify: restart nginx
+    file:
+      src: /etc/nginx/sites-available/jjg1914.me
+      dest: /etc/nginx/sites-enabled/default
+      owner: root
+      group: root
+      state: link
+
   handlers:	
 
   - name: restart nginx
