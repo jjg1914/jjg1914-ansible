@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  remote_user: ubuntu
   tasks: 
   - name: Install build-essential
     package:
@@ -108,14 +107,6 @@
     git:
       repo: https://github.com/jjg1914/jjg1914.me
       dest: /home/ubuntu/git/jjg1914.me/
-
-  - name: DIRECTORY git
-    file:
-      path: /home/ubuntu/git
-      owner: ubuntu
-      group: ubuntu
-      state: directory
-      recurse: yes
 
   handlers:	
 
