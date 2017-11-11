@@ -7,7 +7,12 @@ logo=/cgit.png
 
 virtual-root=/
 
+repo.url=jjg1914.me
+repo.path=/home/ubuntu/git/jjg1914.me/.git
+repo.desc=Default Site
+repo.owner=jjg1914@gmail.com
+
 repo.url=jjg1914.me-ansible
-repo.path=/var/www/cgit/jjg1914.me-ansible.git
+repo.path=/home/ubuntu/git/jjg1914.me-ansible/.git
 repo.desc=Site Configuration
 repo.owner=jjg1914@gmail.com
