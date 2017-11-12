@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ansible-playbook -i "localhost," -c local "$1"
+ansible-playbook -v -i "localhost," -c local "$1"
