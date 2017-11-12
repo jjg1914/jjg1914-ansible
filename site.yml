@@ -178,9 +178,6 @@
       job: /home/ubuntu/git/jjg1914.me-ansible/scripts/cron-jjg1914.me-pull  && curl -fsS --retry 3 https://hchk.io/df9adef7-5fae-40ab-9803-80688eb4f11e > /dev/null
       minute: "*/5"
 
-  - name: test
-    shell: touch ~/foo.txt
-
   handlers:	
 
   - name: restart nginx
