@@ -150,18 +150,18 @@
       state: link
     become: true
 
-  - name: jjg1914.me-ansible post-receive
+  - name: jjg1914.me-ansible post-merge
     template:
-      src: jjg1914.me-ansible.post-receive
-      dest: /home/ubuntu/git/jjg1914.me-ansible/.git/hooks/post-receive
+      src: jjg1914.me-ansible.post-merge
+      dest: /home/ubuntu/git/jjg1914.me-ansible/.git/hooks/post-merge
       owner: ubuntu
       group: ubuntu
       mode: 0755
 
-  - name: jjg1914.me post-receive
+  - name: jjg1914.me post-merge
     template:
-      src: jjg1914.me.post-receive
-      dest: /home/ubuntu/git/jjg1914.me/.git/hooks/post-receive
+      src: jjg1914.me.post-merge
+      dest: /home/ubuntu/git/jjg1914.me/.git/hooks/post-merge
       owner: ubuntu
       group: ubuntu
       mode: 0755

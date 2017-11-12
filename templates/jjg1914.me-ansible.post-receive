@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd "$GIT_DIR/.." || exit 1
-./scripts/deploy.sh site.yml
