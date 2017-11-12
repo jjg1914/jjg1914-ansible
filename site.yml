@@ -179,7 +179,7 @@
       minute: "*/5"
 
   - name: test
-    shell: touch ~/foo.txt
+    shell: touch ~/foo2.txt
 
   handlers:	
 
