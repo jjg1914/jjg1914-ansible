@@ -1,3 +1,4 @@
 #!/bin/sh
 
-git --git-dir=/home/ubuntu/git/jjg1914.me/.git pull
+cd /home/ubuntu/git/jjg1914.me || exit 1
+git pull origin master
