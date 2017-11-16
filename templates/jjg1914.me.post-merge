@@ -1,5 +1,7 @@
 #!/bin/sh
 
-cd "$GIT_DIR/.." || exit 1
-bundle install
-bundle exec jekyll build
+. "~/.bashrc"
+
+cd "$GIT_DIR/.." || exit 1 >>"$HOME/jjg1914.me.log" 2>>"$HOME/jjg1914.me.log"  
+bundle install >>"$HOME/jjg1914.me.log" 2>>"$HOME/jjg1914.me.log"  
+bundle exec jekyll build >>"$HOME/jjg1914.me.log" 2>>"$HOME/jjg1914.me.log"  
